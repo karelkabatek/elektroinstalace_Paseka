@@ -1,10 +1,13 @@
-// Najděte řádek s adaptérem a změňte ho:
-import { cloudflareAdapter } from '@tanstack/start-adapter-cloudflare' // Změna z vercel na cloudflare
+import { defineConfig } from '@tanstack/react-start/config'
+import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
-  server: {
-    preset: 'cloudflare-pages', // Musí zde být cloudflare-pages nebo cloudflare
-    adapter: cloudflareAdapter(),
+  vite: {
+    plugins: [
+      tsconfigPaths(),
+    ],
   },
-  // ... zbytek kódu
+  server: {
+    preset: 'vercel', // Toto řekne TanStacku, aby vygeneroval výstup pro Vercel
+  },
 })
