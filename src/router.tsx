@@ -1,5 +1,15 @@
 import { createRouter, useRouter } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
+import ReactDOM from 'react-dom/client'
+import { RouterProvider } from '@tanstack/react-router'
+
+// ... (zbytek tvého kódu s definicí proměnné 'router') ...
+
+const rootElement = document.getElementById('root')!
+if (!rootElement.innerHTML) {
+  const root = ReactDOM.createRoot(rootElement)
+  root.render(<RouterProvider router={router} />)
+}
 
 function DefaultErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   const router = useRouter();
